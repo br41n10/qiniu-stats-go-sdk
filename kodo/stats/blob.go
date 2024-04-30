@@ -18,6 +18,7 @@ type BlobResp struct {
 }
 
 // BlobIO https://developer.qiniu.com/kodo/3820/blob-io
+// ret 列表中只包含有效数据
 func (m *StatsManager) BlobIO(beginDate, endDate, granularity, _select, bucket, domain, region, ftype string, metric string) (ret []BlobResp, err error) {
 	var uri url.URL
 	query := uri.Query()

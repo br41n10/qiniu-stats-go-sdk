@@ -19,6 +19,7 @@ type SpaceReq struct {
 	OnlyPreDel  int    `url:"only_predel,omitempty"`
 }
 
+// 当时间粒度为 5min 时，Times 列表中会包含还未到达的时间，对应的 Datas 为 0
 type SpaceResp struct {
 	Times []int64 `json:"times"`
 	Datas []int64 `json:"datas"`
