@@ -36,7 +36,7 @@ func (m *StatsManager) SpaceLine(beginDate, endDate, granularity, bucket, region
 
 // SpaceArchive https://developer.qiniu.com/kodo/6462/space-archive
 func (m *StatsManager) SpaceArchive(beginDate, endDate, granularity, bucket, region string) (ret SpaceResp, err error) {
-	return m.SpaceRequest("/v6/space", SpaceReq{beginDate, endDate, granularity, bucket, region, 0, 0})
+	return m.SpaceRequest("/v6/space/space_archive", SpaceReq{beginDate, endDate, granularity, bucket, region, 0, 0})
 }
 
 // Count https://developer.qiniu.com/kodo/3914/count
