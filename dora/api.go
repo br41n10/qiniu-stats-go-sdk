@@ -4,12 +4,13 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/qiniu/x/log"
-	"github.com/yzchan/qiniu-sdk-patch/lib"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"time"
+
+	"github.com/br41n10/qiniu-stats-go-sdk/lib"
+	"github.com/qiniu/x/log"
 
 	"github.com/qiniu/go-sdk/v7/auth"
 	"github.com/qiniu/go-sdk/v7/auth/qbox"

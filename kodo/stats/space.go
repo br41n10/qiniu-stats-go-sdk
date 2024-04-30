@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"errors"
 
+	"github.com/br41n10/qiniu-stats-go-sdk/kodo"
+	"github.com/br41n10/qiniu-stats-go-sdk/lib"
 	"github.com/google/go-querystring/query"
-	"github.com/yzchan/qiniu-sdk-patch/kodo"
-	"github.com/yzchan/qiniu-sdk-patch/lib"
 )
 
 type SpaceReq struct {

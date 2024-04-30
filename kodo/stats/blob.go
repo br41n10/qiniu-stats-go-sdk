@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/yzchan/qiniu-sdk-patch/lib"
+	"github.com/br41n10/qiniu-stats-go-sdk/lib"
 )
 
 type BlobResp struct {

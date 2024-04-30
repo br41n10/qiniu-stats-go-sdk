@@ -3,12 +3,13 @@ package pili
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/qiniu/go-sdk/v7/storage"
-	"github.com/yzchan/qiniu-sdk-patch/lib"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"time"
+
+	"github.com/br41n10/qiniu-stats-go-sdk/lib"
+	"github.com/qiniu/go-sdk/v7/storage"
 
 	"github.com/qiniu/go-sdk/v7/auth"
 	"github.com/qiniu/go-sdk/v7/auth/qbox"
@@ -122,7 +123,7 @@ func sendGetRequest(mac *qbox.Mac, path string, query string) (resp []byte, err 
 	}
 	defer response.Body.Close()
 
-	if resp, err = ioutil.ReadAll(response.Body); err != nil {
+	if resp, err = io.ReadAll(response.Body); err != nil {
 		return
 	}
 	fmt.Println(string(resp))

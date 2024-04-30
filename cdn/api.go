@@ -1,4 +1,4 @@
-package stats
+package cdn
 
 import (
 	"fmt"
@@ -9,22 +9,31 @@ import (
 	"github.com/qiniu/go-sdk/v7/auth"
 	"github.com/qiniu/go-sdk/v7/auth/qbox"
 	"github.com/qiniu/go-sdk/v7/conf"
-	"github.com/qiniu/go-sdk/v7/storage"
 )
 
-type StatsManager struct {
-	mac *auth.Credentials
+var (
+	HostApi = "https://api.qiniu.com"
+)
+
+type CdnManager struct {
+	mac   *auth.Credentials
+	Debug bool
 }
 
-func NewStatManager(mac *qbox.Mac) *StatsManager {
-	return &StatsManager{mac: mac}
+func NewCdnManager(mac *qbox.Mac) *CdnManager {
+	return &CdnManager{mac, false}
+}
+
+// TODO
+func (m *CdnManager) GetDomains() ([]string, error) {
+	return []string{}, nil
 }
 
 // sendGetRequest 发送签名请求，如果 response status code 不是 2xx 则返回错误
 func sendGetRequest(mac *qbox.Mac, path string, query string) (resp []byte, err error) {
 	u := url.URL{
 		Scheme:   "https",
-		Host:     storage.DefaultAPIHost,
+		Host:     HostApi,
 		Path:     path,
 		RawQuery: query,
 	}
@@ -34,7 +43,7 @@ func sendGetRequest(mac *qbox.Mac, path string, query string) (resp []byte, err 
 	if request, err = http.NewRequest("GET", u.String(), nil); err != nil {
 		return
 	}
-	request.Header.Set("Host", storage.DefaultAPIHost)
+
 	request.Header.Set("Content-Type", conf.CONTENT_TYPE_FORM)
 	if _, err = mac.SignRequest(request); err != nil {
 		return
